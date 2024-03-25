@@ -138,21 +138,14 @@ class NotificationHelper {
             .setOngoing(bundle.getBoolean("ongoing", false))
             .setContentText(bundle.getString("message"));
 
-       
-
-        if(bundle.getBoolean("button", false) == true){
-            notificationBuilder.addAction(R.drawable.redbox_top_border_background, bundle.getString("buttonText", "Button"), pendingBtnIntent);
+        if(bundle.getBoolean("button", false)){
+            notificationBuilder.addAction(0x7f010001, bundle.getString("buttonText", "Button"), pendingBtnIntent);
         }
 
-        if(bundle.getBoolean("button2", false) == true){
-            notificationBuilder.addAction(R.drawable.redbox_top_border_background, bundle.getString("button2Text", "Button"), pendingBtn2Intent);
+        if(bundle.getBoolean("button2", false)){
+            notificationBuilder.addAction(0x7f010001, bundle.getString("button2Text", "Button"), pendingBtn2Intent);
         }
 
-
-        
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notificationBuilder.setColor(this.config.getNotificationColor());
-        }
         String color = bundle.getString("color");
         if(color != null){
             notificationBuilder.setColor(Color.parseColor(color));
